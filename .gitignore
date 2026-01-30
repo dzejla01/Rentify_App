@@ -1,0 +1,107 @@
+####################################
+# OS
+####################################
+.DS_Store
+Thumbs.db
+
+####################################
+# Visual Studio / VS Code
+####################################
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+####################################
+# .NET / ASP.NET Core
+####################################
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# EF Core
+Migrations/*.Designer.cs
+Migrations/*.json
+
+####################################
+# Configuration (SECRET)
+####################################
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+
+####################################
+# Flutter / Dart
+####################################
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+####################################
+# Flutter platform folders
+####################################
+android/.gradle/
+android/local.properties
+android/key.properties
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/App.framework
+ios/Flutter/engine/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/.last_build_id
+
+macos/Pods/
+macos/Flutter/ephemeral/
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+
+####################################
+# Android
+####################################
+*.apk
+*.aab
+*.keystore
+*.jks
+
+####################################
+# Node / npm (ako koristiš alate)
+####################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+####################################
+# Logs
+####################################
+logs/
+*.log
+
+####################################
+# Environment files
+####################################
+.env
+.env.*
+
+####################################
+# Docker
+####################################
+docker-data/
+**/docker-data/
