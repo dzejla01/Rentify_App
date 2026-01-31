@@ -24,6 +24,7 @@ namespace Rentify.Model.RequestObjects
 
         [Phone, MaxLength(20)]
         public string? PhoneNumber { get; set; }
+        public string? UserImage { get; set; }
 
         public bool IsActive { get; set; } = true;
 

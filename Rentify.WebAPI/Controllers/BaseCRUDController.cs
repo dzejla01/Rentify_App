@@ -21,7 +21,6 @@ namespace Rentify.WebAPI.Controllers
             _crudService = service;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public virtual async Task<T> Create([FromBody] TInsert request)
         {

@@ -29,6 +29,7 @@ namespace Rentify.Services.Database
         public string PasswordHash { get; set; } = string.Empty;
 
         public string PasswordSalt { get; set; } = string.Empty;
+        public string UserImage { get; set; }
 
         public bool IsActive { get; set; } = true;
         public bool IsVlasnik { get; set; } = false;

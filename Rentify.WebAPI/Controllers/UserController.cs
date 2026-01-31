@@ -20,6 +20,12 @@ namespace Rentify.WebAPI.Controllers
         }
 
         [AllowAnonymous]
+        public override Task<UserResponse> Create([FromBody] UserInsertRequest request)
+        {
+            return base.Create(request);
+        }
+
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<LoginResponse> Login([FromBody] LoginRequest request)
         {

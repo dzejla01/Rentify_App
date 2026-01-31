@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Rentify.Services;
 using Rentify.Services.Interfaces;
+using Rentify.Services.Services;
 using Rentify.WebAPI.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,6 +52,13 @@ builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
 builder.Services.AddScoped<IMapper, ServiceMapper>();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPropertyService,PropertyService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+
+
 
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddAuthorization();

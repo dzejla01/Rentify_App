@@ -11,6 +11,7 @@ using Rentify.Services.Helpers;
 using Rentify.Services.Interfaces;
 using Rentify.Services.Services;
 using System;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,6 +28,7 @@ namespace Rentify.Services
         {
             _configuration = configuration;
         }
+
 
         protected override IQueryable<User> ApplyFilter(IQueryable<User> query, UserSearchObject search)
         {
@@ -108,6 +110,8 @@ namespace Rentify.Services
         public async Task<LoginResponse> LoginAsync(LoginRequest request)
         {
             var user = await _context.Users
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(x => x.Username == request.Username);
 
             if (user == null || !user.IsActive)
@@ -120,7 +124,12 @@ namespace Rentify.Services
 
             var response = new LoginResponse
             {
-                Token = token
+                UserId = user.Id,
+                UserName = request.Username,
+                Token = token,
+                Roles = user.UserRoles
+                    .Select(ur => ur.Role.Name)
+                    .ToList()
             };
 
             user.LastLoginAt = DateTime.UtcNow;
@@ -129,7 +138,8 @@ namespace Rentify.Services
             return response;
         }
 
-        
+
+
 
     }
 }

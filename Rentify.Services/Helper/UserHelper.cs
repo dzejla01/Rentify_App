@@ -45,12 +45,21 @@ namespace Rentify.Services.Helpers
             var jwtKey = configuration["Jwt:Key"]!;
             var jwtIssuer = configuration["Jwt:Issuer"]!;
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim("isVlasnik", user.IsVlasnik.ToString())
+                new Claim(ClaimTypes.Name, user.Username)
             };
+
+            if (user.IsVlasnik)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Vlasnik"));
+            }
+            else
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Korisnik"));
+            }
+
 
             var signingKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(jwtKey)
